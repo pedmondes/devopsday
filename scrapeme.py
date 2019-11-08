@@ -1,4 +1,4 @@
-FROM urllib import request
+from urllib import request
 from bs4 import BeautifulSoup
 
 url = 'http://www.bbc.co.uk'
@@ -8,7 +8,7 @@ req = request.Request(url, headers=h)
 with request.urlopen(req) as r:
     data = BeautifulSoup(r, 'html.parser')
 
-title = data.title
+title = data.title.string
 
 with open(r'/data/scrapetitles', 'a') as f:
     f.write(title)
